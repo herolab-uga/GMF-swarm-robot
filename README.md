@@ -1,7 +1,16 @@
 # GMF-swarm-robot
 **Gravitational Mass-Field (GMF) Framework for Swarm Robotics and Multi-Robot Systems**
 
-GMF is a parametric distributed control framework that can execute control policies in three domains: control of the multi-agent system through the current gravity 'g' value agreed in the system, local control of a node pair through the link force (F_ij) agreed among robots i and j, and the quantification of the agent’s capabilities using the mass 'm_i' values. Modifying these parameters causes private, local, and global-level changes and forces the inter-agent distances to satisfy the force equation. The low-level (primary) goal of GMF-based distributed control is to maintain the link force between it and its neighbors.
+GMF is a parametric distributed control framework that follows the below gravitational force equation.
+
+GMF principle: $F_{ij} = \frac{g*m_i*m_j}{r_{ij}^2}$ for all robots j in the (immediate) neighborhood of robot i.
+
+Expected distance to be mainted following GMF principle: $r_{ij}^{GMF}(t)  & = \sqrt{\frac{{g}_i(t) m_i (t) m_j(t)}{F_{ij}(t)}}$
+
+Robot's control policy: $u_i(t) & = K_p\sum\limits_{j \in {\mathcal{N}_{i}}}  (\|\Tilde{r}_{ij} (t) \|^2 - \|r_{ij}^{GMF} (t)\|^2)  \Tilde{r}_{ij}$, where $\Tilde{r}_{ij}$ is the current distance between robots i and j.
+
+
+GMF execute control policies in three domains: control of the multi-agent system through the current gravity 'g' value agreed in the system, local control of a node pair through the link force (F_ij) agreed among robots i and j, and the quantification of the agent’s capabilities using the mass 'm_i' values. Modifying these parameters causes private, local, and global-level changes and forces the inter-agent distances to satisfy the force equation. The low-level (primary) goal of GMF-based distributed control is to maintain the link force between it and its neighbors.
 
 At any instant t, each robot maintains a local copy (time-stamped self-versions of) three sets of parameters: 
 1) global g value at robot i, which needs to be globally consistent (i.e., periodically achieve consensus),
