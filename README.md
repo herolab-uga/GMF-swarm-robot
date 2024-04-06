@@ -8,18 +8,18 @@ $` F_{ij} = \frac{g*m_i*m_j}{r_{ij}^2} `$
 for all robots i and j that share a connectivity graph (i.e., robot j is in the (immediate) neighborhood of robot i)
 
 Expected distance to be maintained following GMF principle: 
-$` r_{ij}^{GMF}(t)  & = \sqrt{\frac{{g}_i(t) m_i (t) m_j(t)}{F_{ij}(t)}} `$
+$` r_{ij}^{GMF}(t)  = \sqrt{\frac{{g}_i(t) m_i (t) m_j(t)}{F_{ij}(t)}} `$
 
 Each robot i's control policy: 
-$` u_i(t) & = K_p\sum\limits_{j \in {\mathcal{N}_{i}}}  (\|\Tilde{r}_{ij} (t) \|^2 - \|r_{ij}^{GMF} (t)\|^2)  \Tilde{r}_{ij} `$, 
+$` u_i(t)  = K_p\sum\limits_{j \in {\mathcal{N}_{i}}}  (\|\Tilde{r}_{ij} (t) \|^2 - \|r_{ij}^{GMF} (t)\|^2)  \Tilde{r}_{ij} `$, 
 where $` \Tilde{r}_{ij} `$ is the current distance between robots i and j.
 
-GMF can execute control policies in three domains: control of the multi-agent system through the current gravity 'g' value agreed in the system, local control of a node pair through the link force (F_ij) agreed among robots i and j, and the quantification of the agent’s capabilities using the mass 'm_i' values. Modifying these parameters causes private, local, and global-level changes and forces the inter-agent distances to satisfy the force equation. The low-level (primary) goal of GMF-based distributed control is to maintain the link force between it and its neighbors.
+GMF can execute control policies in three domains: control of the multi-agent system through the current gravity 'g' value agreed in the system, local control of a node pair through the link force ($`F_{ij}`$) agreed among robots i and j, and the quantification of the agent’s capabilities using the mass $`m_i`$ values. Modifying these parameters causes private, local, and global-level changes and forces the inter-agent distances to satisfy the force equation. The low-level (primary) goal of GMF-based distributed control is to maintain the link force between it and its neighbors.
 
 At any instant t, each robot maintains a local copy (time-stamped self-versions of) three sets of parameters: 
-1) global g value at robot i, which needs to be globally consistent (i.e., periodically achieve consensus),
-2) local mass m_i value, which can be changed based on any task robot i wants to perform (see boundary tracking for an example)
-3) private link force F_ij that robot i wants to maintain with robot j based on their tasks (or to maintain personalized attraction and repulsive forces)
+1) global $`g`$ value at robot i, which needs to be globally consistent (i.e., periodically achieve consensus),
+2) local mass $`m_{i}`$ value, which can be changed based on any task robot i wants to perform (see boundary tracking for an example)
+3) private link force $`F_{ij}`$ that robot i wants to maintain with robot j based on their tasks (or to maintain personalized attraction and repulsive forces)
 
  
 # Experiment Demonstrations
@@ -45,17 +45,17 @@ On a line graph, Robot 4 initiates rendezvous by decrementing the gravity (g) va
 
 
 **Local Rendezvous**
-On a line graph, Robot 4 initiates rendezvous by decrementing its mass (m_5) value over time. Other robots react to this, affecting the robots in the neighborhood of robot 5 rendezvous together at a local level (since it is a line graph).
+On a line graph, Robot 4 initiates rendezvous by decrementing its mass ($`m_{4}`$) value over time. Other robots react to this, affecting the robots in the neighborhood of robot 5 rendezvous together at a local level (since it is a line graph).
 
 ![Local Rendezvous Robotarium Simulator Demo](https://github.com/herolab-uga/GMF-swarm-robot/blob/main/gifs/local_rendezvous_line.gif)
 
 **Private Rendezvous**
-On a line graph, Robots 4 and 5 initiate rendezvous by incrementing their Force (F_45) value over time. To satisfy the GMF principle, robots 4 and 5 will have to reduce their distance to each other, resulting in rendezvous at a private level (to robots 4 and 5 only). However, others adjust their positions to satisfy the GMF principle based on the new changes to the system.
+On a line graph, Robots 4 and 5 initiate rendezvous by incrementing their Force ($`F_{45}`$) value over time. To satisfy the GMF principle, robots 4 and 5 will have to reduce their distance to each other, resulting in rendezvous at a private level (to robots 4 and 5 only). However, others adjust their positions to satisfy the GMF principle based on the new changes to the system.
 
 ![Private Rendezvous Robotarium Simulator Demo](https://github.com/herolab-uga/GMF-swarm-robot/blob/main/gifs/private_rendezvous_line.gif)
 
 **Boundary Tracking**
-On a line graph, tobots are forming a circular formation around a physical source initially. Tobots set their mass values based on the luminosity (signal strength) measurement at their position. When the intensity of the light source increases gradually, the robot's mass value increases, increasing its inter-robot distances and forming a larger circular shape. Vice versa, when the intensity decreases over time. This effect is seen as tracking the boundary of a target/source based on measurements. 
+On a line graph, robots form a circular formation around a physical source initially. Tobots set their mass values based on the luminosity (signal strength) measurement at their position. When the intensity of the light source increases gradually, the robot's mass value increases, increasing its inter-robot distances and forming a larger circular shape. Vice versa, when the intensity decreases over time. This effect is seen as tracking the boundary of a target/source based on measurements. 
 
 ![Boundary Tracking Demo](https://github.com/herolab-uga/GMF-swarm-robot/blob/main/gifs/sensor_control_new-unimodal.gif)
 
@@ -72,6 +72,6 @@ On a line graph, out of 7 robots, three robots are given specific goal points si
 ## Demonstrations on Robotarium Hardware Testbed
 
 **Multi-Robot Rendezvous**
-On a complete graph, Robot 5 initiates the rendezvous objective by reducing its mass (m_5) value over time. This effect impacts the global level (whole group).
+On a complete graph, Robot 5 initiates the rendezvous objective by reducing its mass ($`m_5`$) value over time. This effect impacts the global level (whole group).
 
 ![Global Rendezvous Robotarium Hardware Demo](https://github.com/herolab-uga/GMF-swarm-robot/blob/main/gifs/global-rendezvous-robotarium-hardware.gif)
