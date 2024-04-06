@@ -11,8 +11,8 @@ Expected distance to be maintained following GMF principle:
 $` r_{ij}^{GMF}(t)  = \sqrt{\frac{{g}_i(t) m_i (t) m_j(t)}{F_{ij}(t)}} `$
 
 Each robot i's control policy: 
-$` u_i(t)  = K_p\sum\limits_{j \in {\mathcal{N}_{i}}}  (\|\Tilde{r}_{ij} (t) \|^2 - \|r_{ij}^{GMF} (t)\|^2)  \Tilde{r}_{ij} `$, 
-where $` \Tilde{r}_{ij} `$ is the current distance between robots i and j.
+$` u_i(t)  = K_p\sum\limits_{j \in {\mathcal{N}_{i}}}  (\|\tilde{r}_{ij} (t) \|^2 - \|r_{ij}^{GMF} (t)\|^2)  \tilde{r}_{ij} `$, 
+where $` \tilde{r}_{ij} = (p_j - p_i) `$ is the vector towards robot j from robot i and $`\|\tilde{r}_{ij} (t) \| = \|p_j - p_i\| `$ is the Euclidean distance between robots i and j.
 
 GMF can execute control policies in three domains: control of the multi-agent system through the current gravity 'g' value agreed in the system, local control of a node pair through the link force ($`F_{ij}`$) agreed among robots i and j, and the quantification of the agent’s capabilities using the mass $`m_i`$ values. Modifying these parameters causes private, local, and global-level changes and forces the inter-agent distances to satisfy the force equation. The low-level (primary) goal of GMF-based distributed control is to maintain the link force between it and its neighbors.
 
