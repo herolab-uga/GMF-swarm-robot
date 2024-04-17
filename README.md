@@ -11,15 +11,15 @@ Expected distance to be maintained following GMF principle:
 $` r_{ij}^{GMF}(t)  = \sqrt{\frac{{g}_i(t) m_i (t) m_j(t)}{F_{ij}(t)}} `$
 
 Each robot i's control policy: 
-$` u_i(t)  = K_p\sum\limits_{j \in {\mathcal{N}_{i}}}  (\|\tilde{r}_{ij} (t) \|^2 - \|r_{ij}^{GMF} (t)\|^2)  \tilde{r}_{ij} `$, 
-where $` \tilde{r}_{ij} = (p_j - p_i) `$ is the vector towards robot j from robot i and $`\|\tilde{r}_{ij} (t) \| = \|p_j - p_i\| `$ is the Euclidean distance between robots i and j.
+$` u_i(t)  = K_p\sum\limits_{j \in {\mathcal{N}_{i}}}  (\|\tilde{r}_{ij} (t) \|^2 - \|r_{ij}^{GMF} (t)\|^2)  \tilde{r}_{ij}(t) `$, 
+where $` \tilde{r}_{ij}(t) = (p_j(t) - p_i(t)) `$ is the vector towards robot j from robot i based on their current positions and $`\|\tilde{r}_{ij} (t) \| = \|p_j - p_i\| `$ is the Euclidean distance between robots i and j.
 
 GMF can execute control policies in three domains: control of the multi-agent system through the current gravity 'g' value agreed in the system, local control of a node pair through the link force ($`F_{ij}`$) agreed among robots i and j, and the quantification of the agent’s capabilities using the mass $`m_i`$ values. Modifying these parameters causes private, local, and global-level changes and forces the inter-agent distances to satisfy the force equation. The low-level (primary) goal of GMF-based distributed control is to maintain the link force between it and its neighbors.
 
 At any instant t, each robot maintains a local copy (time-stamped self-versions of) three sets of parameters: 
 1) global $`g`$ value at robot i, which needs to be globally consistent (i.e., periodically achieve consensus),
 2) local mass $`m_{i}`$ value, which can be changed based on any task robot i wants to perform (see boundary tracking for an example)
-3) private link force $`F_{ij}`$ that robot i wants to maintain with robot j based on their tasks (or to maintain personalized attraction and repulsive forces)
+3) private link force $`F_{ij}`$ that robot i want to maintain with robot j based on their tasks (or to maintain personalized attraction and repulsive forces)
 
  
 # Experiment Demonstrations
@@ -45,7 +45,7 @@ On a line graph, Robot 4 initiates rendezvous by decrementing the gravity (g) va
 
 
 **Local Rendezvous**
-On a line graph, Robot 4 initiates rendezvous by decrementing its mass ($`m_{4}`$) value over time. Other robots react to this, affecting the robots in the neighborhood of robot 5 rendezvous together at a local level (since it is a line graph).
+On a line graph, Robot 5 initiates rendezvous by decrementing its mass ($`m_{5}`$) value over time. Other robots react to this, affecting the robots in the neighborhood of robot 5 rendezvous together at a local level (since it is a line graph).
 
 ![Local Rendezvous Robotarium Simulator Demo](https://github.com/herolab-uga/GMF-swarm-robot/blob/main/gifs/local_rendezvous_line.gif)
 
