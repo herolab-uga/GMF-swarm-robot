@@ -39,7 +39,7 @@ Some robots get specific goals (Tasks), while others coordinate their g values a
 ## Demonstrations on Robotarium Simulator Testbed
 
 **Global Rendezvous**
-On a line graph, Robot 4 initiates rendezvous by decrementing the gravity (g) value over time. Other robots achieve this consensus on g, affecting all robots meeting (rendezvous) together at a global level. 
+On a line (linear-chain) graph, Robot 4 initiates rendezvous by decrementing the gravity (g) value over time. Other robots achieve this consensus on g, affecting all robots meeting (rendezvous) together at a global level. 
 
 ![Global Rendezvous Robotarium Simulator Demo](https://github.com/herolab-uga/GMF-swarm-robot/blob/main/gifs/global_rendezvous_line.gif)
 
@@ -60,12 +60,12 @@ On a line graph, robots form a circular formation around a physical source initi
 ![Boundary Tracking Demo](https://github.com/herolab-uga/GMF-swarm-robot/blob/main/gifs/sensor_control_new-unimodal.gif)
 
 **Task Execution (Sequential)**
-On a line graph, out of 10 robots, four robots are given specific goal points in a sequential manner (one goal after another when the first robot reaches its goal point). The non-goal-reaching robots adjust their positions to satisfy the GMF principle. When they cannot satisfy (because there is no configuration allowing them to move to), they propose changes to the 'g' values and achieve consensus on this value globally. 
+On a line graph, out of 10 robots, 4 robots are given specific goal points in a sequential manner (one goal after another when the first robot reaches its goal point). The non-goal-reaching robots adjust their positions to satisfy the GMF principle. When they cannot satisfy (because there is no configuration allowing them to move to), they propose changes to the 'g' values and achieve consensus on this value globally. 
 
 ![Task Execution Sequential](https://github.com/herolab-uga/GMF-swarm-robot/blob/main/gifs/task_allocation_ten_sequential.gif)
 
 **Task Execution (Parallel/Dynamic)**
-On a line graph, out of 7 robots, three robots are given specific goal points simultaneously, and these robots go to their goals. Other robots adjust their positions to satisfy the GMF principle. When they cannot satisfy (because there is no configuration allowing them to move to), they propose changes to the 'g' values and achieve consensus on this value globally. 
+On a line graph, out of 7 robots, 4 robots are given specific goal points simultaneously, and these robots go to their goals. Other robots adjust their positions to satisfy the GMF principle. When they cannot satisfy (because there is no configuration allowing them to move to), they propose changes to the 'g' values and achieve consensus on this value globally. 
 
 ![Task Execution Parallel](https://github.com/herolab-uga/GMF-swarm-robot/blob/main/gifs/task_allocation_parallel.gif)
 
